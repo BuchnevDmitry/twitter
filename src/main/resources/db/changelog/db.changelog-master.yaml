@@ -5,3 +5,9 @@ databaseChangeLog:
   - include:
       file: 0.0.1/changelog-create-identity-schema.sql
       relativeToChangelogFile: true
+  - include:
+      file: 0.0.1/changelog-create-twitter-user_profiles-table.sql
+      relativeToChangelogFile: true
+  - include:
+      file: 0.0.1/changelog-create-twitter-tweets-table.sql
+      relativeToChangelogFile: true
