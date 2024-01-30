@@ -9,4 +9,5 @@ public interface TweetService {
     Tweet updateTweet(Tweet tweet);
     Optional<Tweet> findTweetById(long tweetId);
 
+    void deleteTweet(long tweetId);
 }
