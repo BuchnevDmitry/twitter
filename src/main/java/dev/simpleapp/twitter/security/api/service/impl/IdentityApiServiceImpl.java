@@ -23,7 +23,7 @@ public class IdentityApiServiceImpl implements IdentityApiService {
     public Optional<CurrentUserApiModel> currentUserAccount() {
 
         SecurityContext securityContext = SecurityContextHolder.getContext();
-        return Optional.ofNullable(securityContext.getAuthentication()) 
+        return Optional.ofNullable(securityContext.getAuthentication())
                 .map(Authentication::getName)
                 .flatMap(this::extractCurrentUserApiModel);
 
