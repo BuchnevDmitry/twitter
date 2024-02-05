@@ -4,10 +4,7 @@ import dev.simpleapp.twitter.user.tweet.usecase.TweetAddUseCase;
 import dev.simpleapp.twitter.user.tweet.usecase.TweetDeleteUseCase;
 import dev.simpleapp.twitter.user.tweet.usecase.TweetEditUseCase;
 import dev.simpleapp.twitter.user.tweet.usecase.TweetFindUseCase;
-import dev.simpleapp.twitter.user.tweet.web.model.TweetAddRequest;
-import dev.simpleapp.twitter.user.tweet.web.model.TweetEditRequest;
-import dev.simpleapp.twitter.user.tweet.web.model.TweetFindRequest;
-import dev.simpleapp.twitter.user.tweet.web.model.TweetResponse;
+import dev.simpleapp.twitter.user.tweet.web.model.*;
 import jakarta.validation.Valid;
 import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
@@ -48,7 +45,7 @@ public class TweetController {
     }
 
     @GetMapping
-    public Collection<TweetResponse> findOwnerTweets(@PathParam("page") int page, @PathParam("limit") int limit) {
+    public TweetPageResponse findOwnerTweets(@PathParam("page") int page, @PathParam("limit") int limit) {
         TweetFindRequest findRequest = new TweetFindRequest(page, limit);
         return tweetFindUseCase.findTweets(findRequest);
     }
