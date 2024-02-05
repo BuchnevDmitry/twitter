@@ -6,8 +6,10 @@ import dev.simpleapp.twitter.user.tweet.usecase.TweetEditUseCase;
 import dev.simpleapp.twitter.user.tweet.usecase.TweetFindUseCase;
 import dev.simpleapp.twitter.user.tweet.web.model.TweetAddRequest;
 import dev.simpleapp.twitter.user.tweet.web.model.TweetEditRequest;
+import dev.simpleapp.twitter.user.tweet.web.model.TweetFindRequest;
 import dev.simpleapp.twitter.user.tweet.web.model.TweetResponse;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,7 +48,8 @@ public class TweetController {
     }
 
     @GetMapping
-    public Collection<TweetResponse> findOwnerTweets() {
-        return tweetFindUseCase.findTweets();
+    public Collection<TweetResponse> findOwnerTweets(@PathParam("page") int page, @PathParam("limit") int limit) {
+        TweetFindRequest findRequest = new TweetFindRequest(page, limit);
+        return tweetFindUseCase.findTweets(findRequest);
     }
 }
